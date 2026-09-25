@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Token Manager</title>
+<meta name="theme-color" content="#0b0d12" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="apple-touch-icon" href="./icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>🕐 Token Manager</h1>
+</header>
+
+<main>
+  <section class="summary" id="summary"></section>
+
+  <div id="accountList"></div>
+
+  <footer class="settings">
+    <button class="ghost" id="btnExport">Exportar copia</button>
+    <button class="ghost" id="btnImport">Importar copia</button>
+    <button class="ghost" id="btnNotif">Activar avisos</button>
+    <button class="danger" id="btnResetAll">Borrar todo</button>
+  </footer>
+  <input type="file" id="fileImport" accept="application/json" style="display:none" />
+</main>
+
+<button class="fab" id="btnAdd" title="Agregar cuenta">+</button>
+
+<!-- Sheet: agregar/editar cuenta -->
+<div class="sheet-backdrop" id="backdropAccount"></div>
+<div class="sheet" id="sheetAccount">
+  <h2 id="sheetAccountTitle">Nueva cuenta</h2>
+  <label for="fName">Nombre</label>
+  <input type="text" id="fName" placeholder="Ej: Cuenta principal" />
+  <label for="fColor">Color</label>
+  <input type="text" id="fColor" placeholder="#7c9cff" value="#7c9cff" />
+  <label for="fDuration">Duración del ciclo (minutos)</label>
+  <input type="number" id="fDuration" value="300" min="1" />
+  <div class="actions-row">
+    <button class="ghost" id="btnCancelAccount">Cancelar</button>
+    <button class="primary" id="btnSaveAccount">Guardar</button>
+  </div>
+</div>
+
+<!-- Sheet: editar próximo corte -->
+<div class="sheet-backdrop" id="backdropReset"></div>
+<div class="sheet" id="sheetReset">
+  <h2>Cambiar próximo corte</h2>
+  <label for="fResetAt">Fecha y hora del corte</label>
+  <input type="datetime-local" id="fResetAt" />
+  <div class="actions-row">
+    <button class="ghost" id="btnCancelReset">Cancelar</button>
+    <button class="primary" id="btnSaveReset">Guardar</button>
+  </div>
+</div>
+
+<!-- Sheet: historial -->
+<div class="sheet-backdrop" id="backdropHistory"></div>
+<div class="sheet" id="sheetHistory">
+  <h2>Historial</h2>
+  <div class="history-list" id="historyList"></div>
+  <div class="actions-row">
+    <button class="ghost" id="btnCloseHistory">Cerrar</button>
+  </div>
+</div>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>
